@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "com.kirkanos.jellyfin",
+  "Name": "Jellyfin Now Playing",
+  "Version": "0.0.0.0",
+  "Author": "Andreas Hacker",
+  "Description": "What is playing on Jellyfin, with pause and stop, on the Stream Deck. Unofficial plugin, not affiliated with the Jellyfin project.",
+  "URL": "https://github.com/kirkanos/Streamdeck-Jellyfin",
+  "Icon": "images/icon",
+  "Category": "Jellyfin Now Playing",
+  "CategoryIcon": "images/category",
+  "CodePath": "bin/plugin.js",
+  "SDKVersion": 3,
+  "Nodejs": {
+    "Version": "24",
+    "Debug": "enabled"
+  },
+  "Software": {
+    "MinimumVersion": "7.1"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Actions": [
+    {
+      "UUID": "com.kirkanos.jellyfin.now-playing",
+      "Name": "Now Playing",
+      "Icon": "images/actions/now-playing",
+      "Tooltip": "Title, progress and client of the playing session; press to pause / resume, hold to stop",
+      "PropertyInspectorPath": "ui/now-playing.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "States": [
+        {
+          "Image": "images/key",
+          "TitleAlignment": "top",
+          "FontSize": 10
+        }
+      ]
+    },
+    {
+      "UUID": "com.kirkanos.jellyfin.dial-now-playing",
+      "Name": "Dial Now Playing",
+      "Icon": "images/actions/dial",
+      "Tooltip": "Browse the playing sessions with the dial; the touch strip shows cover, title and progress",
+      "PropertyInspectorPath": "ui/now-playing.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/dial.json",
+        "Icon": "images/actions/dial",
+        "TriggerDescription": {
+          "Rotate": "Next / previous session",
+          "Push": "Pause / resume",
+          "Touch": "Pause / resume"
+        }
+      },
+      "SupportedInMultiActions": false,
+      "States": [
+        {
+          "Image": "images/key"
+        }
+      ]
+    }
+  ]
+}

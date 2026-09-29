@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Now Playing settings</title>
+    <script src="sdpi-components.js"></script>
+    <script src="connection.js"></script>
+    <link rel="stylesheet" href="pi.css" />
+  </head>
+  <body>
+    <div id="jellyfin-connection"></div>
+
+    <div class="requires-connection" hidden>
+      <sdpi-item label="Preferred client">
+        <sdpi-select setting="preferredClient" datasource="getClients" hot-reload placeholder="First playing session" loading="Loading clients…" show-refresh></sdpi-select>
+      </sdpi-item>
+      <p class="hint">
+        Shown whenever it plays; otherwise the first playing session is shown. Only devices that have been connected since the plugin started are listed.
+      </p>
+
+      <sdpi-item label="Exclude clients">
+        <sdpi-checkbox-list setting="excludeClients" datasource="getClients" hot-reload loading="Loading clients…"></sdpi-checkbox-list>
+      </sdpi-item>
+      <p class="hint">
+        Sessions of these devices are never shown, e.g. the living room TV on a key meant for the office.
+      </p>
+
+      <p class="hint">
+        The title is drawn on the key. If you set your own title, the item title is left out.
+      </p>
+    </div>
+  </body>
+</html>
