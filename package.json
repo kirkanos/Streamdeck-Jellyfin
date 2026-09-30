@@ -1,6 +1,6 @@
 {
   "name": "streamdeck-jellyfin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Jellyfin Now Playing: What is playing on Jellyfin, with pause and stop, on the Stream Deck.",

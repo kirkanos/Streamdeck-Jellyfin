@@ -1,6 +1,6 @@
 # Streamdeck-Jellyfin
 
-Stream Deck plugin `com.kirkanos.jellyfin`. Status: plan only, no code yet.
+Stream Deck plugin `com.kirkanos.jellyfin`. Status: M1–M4 done, released 1.0.0.
 
 ## Goal
 
