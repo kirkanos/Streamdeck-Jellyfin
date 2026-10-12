@@ -137,7 +137,7 @@ export class JellyfinService extends EventEmitter<{ sessions: []; state: [] }> {
     let image: string | undefined;
     try {
       const res = await fetch(`${url}/Items/${encodeURIComponent(itemId)}/Images/Primary?maxWidth=100&quality=80`, {
-        headers: { "X-Emby-Token": apiKey },
+        headers: { Authorization: authorization(apiKey) },
         signal: AbortSignal.timeout(TIMEOUT_MS),
       });
       if (res.ok) {
@@ -254,10 +254,18 @@ class HttpError extends Error {
   }
 }
 
+/**
+ * Authorization header with the API key. Newer Jellyfin servers no longer
+ * accept the legacy X-Emby-Token header.
+ */
+export function authorization(apiKey: string): string {
+  return `MediaBrowser Token="${apiKey.replace(/"/g, "")}"`;
+}
+
 async function request<T = unknown>(base: string, apiKey: string, method: "GET" | "POST", path: string): Promise<T> {
   const res = await fetch(base + path, {
     method,
-    headers: { "X-Emby-Token": apiKey, Accept: "application/json" },
+    headers: { Authorization: authorization(apiKey), Accept: "application/json" },
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!res.ok) {

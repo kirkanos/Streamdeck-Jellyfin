@@ -13,7 +13,7 @@ See what is playing on the Jellyfin server and pause or resume it without a remo
 
 ## Data source & API
 
-- Jellyfin REST with header `X-Emby-Token: <api key>`:
+- Jellyfin REST with header `Authorization: MediaBrowser Token="<api key>"` (the legacy `X-Emby-Token` header is rejected by Jellyfin 12):
   - `GET /Sessions?activeWithinSeconds=60`, keep sessions with `NowPlayingItem`.
   - `POST /Sessions/{id}/Playing/PlayPause`, `POST /Sessions/{id}/Playing/Stop`.
   - Cover: `GET /Items/{itemId}/Images/Primary?maxWidth=100&quality=80`.
